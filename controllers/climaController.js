@@ -10,7 +10,6 @@ async function getClima(req, res) {
     try {
         const data = await climaService.fetchClima(cidade);
 
-
         const formattedData = {
             cidade: data.name,
             pais: data.sys.country,
