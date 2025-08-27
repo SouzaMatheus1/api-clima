@@ -1,5 +1,4 @@
 require('dotenv').config();
-// firebaseConfig.js
 const admin = require('firebase-admin');
 
 // Importe o arquivo de credenciais que você baixou
