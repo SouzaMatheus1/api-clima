@@ -1,8 +1,6 @@
 const climaService = require('../services/climaService');
 
 async function getClima(req, res) {
-    console.log('Requisição recebida na rota /clima. Parâmetros:', req.query);
-
     const { cidade } = req.query;
 
     if (!cidade) {
