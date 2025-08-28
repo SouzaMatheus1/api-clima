@@ -25,6 +25,8 @@ async function getClima(req, res) {
 
         const { error, value } = validateRequisition({
             Cidade: cidade,
+            Temperatura: formattedData.temperatura,
+            SensacaoTermica: formattedData.sensacao_termica,
             Data: new Date()
         });
 
