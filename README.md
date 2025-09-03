@@ -1,9 +1,3 @@
-Claro\! Um arquivo `README.md` bem feito é essencial para qualquer portfólio. Ele serve como a "página inicial" do seu projeto no GitHub, explicando o que ele faz e como outros desenvolvedores podem usá-lo.
-
-Aqui está um modelo de `README.md` que você pode copiar e usar para o seu projeto. Basta preencher as informações do seu perfil e das suas chaves de API.
-
------
-
 # API de Clima (Node.js)
 
 Uma API RESTful simples para buscar dados de clima, desenvolvida em Node.js. Este projeto foi criado com o intuito de demonstrar habilidades em desenvolvimento backend, validação de dados, integração com APIs externas e armazenamento de logs de requisições em um banco de dados NoSQL.
@@ -64,15 +58,15 @@ Siga os passos abaixo para clonar e rodar o projeto em sua máquina.
 4.  **Inicie o servidor:**
 
     ```bash
-    node index.js
+    node public/index.js
     ```
 
     O servidor estará rodando em `http://localhost:3000`.
 
-4.1  **Caso queira testar a conexão com o db:**
+5  **Caso queira testar a conexão com o db:**
 
     ```bash
-    node database/pingDb.js;
+    node app/database/index.js
     ```
 
 ### Endpoints da API
