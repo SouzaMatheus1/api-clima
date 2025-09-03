@@ -1,6 +1,5 @@
 const climaService = require('../services/climaService');
-const { Requisition, validateRequisition } = require('../models/requisicaoModel');
-const db = require('../database/firebaseConfig');
+const logService = require('../services/logService');
 
 async function getClima(req, res) {
     const { cidade } = req.query;
@@ -23,26 +22,13 @@ async function getClima(req, res) {
             icone: `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
         };
 
-        const { error, value } = validateRequisition({
-            Cidade: cidade,
-            Temperatura: formattedData.temperatura,
-            SensacaoTermica: formattedData.sensacao_termica,
-            Data: new Date()
-        });
+        await logService.dbLog(formattedData);
 
-        if(error){
-            console.log("error: ", error.details)
-            return;
-        }
-        
-        const docRef = await db.collection('log').add(value);
-        console.log("Log de requisição registrado com sucesso! ID:", docRef.id);
-
-        res.json(formattedData);
+        res.render('clima', { clima: formattedData });
     } catch (error) {
         if (error.response && error.response.status === 404)
             return res.status(400).json({ error: "Cidade não encontrada." });
-        res.status(500).json({ error: "Erro ao buscar clima." });
+        res.status(500).json({ error: "Erro ao buscar clima.", error: error.message });
     }
 }
 
