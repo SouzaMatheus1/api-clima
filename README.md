@@ -66,7 +66,7 @@ Siga os passos abaixo para clonar e rodar o projeto em sua máquina.
 5  **Caso queira testar a conexão com o db:**
 
     ```bash
-    node app/database/index.js
+    node app/database/pingDb.js
     ```
 
 ### Endpoints da API
