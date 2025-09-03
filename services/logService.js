@@ -7,7 +7,7 @@ async function dbLog(data) {
     try{
         // cria um objeto requisicao (requisicaoModel.js)
         const { error, value } = validateRequisition({
-            Cidade: data.cidade,
+            Cidade: data.cidade + ' - ' + data.pais,
             Temperatura: data.temperatura,
             SensacaoTermica: data.sensacao_termica,
             Data: new Date()
