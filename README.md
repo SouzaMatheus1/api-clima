@@ -69,6 +69,12 @@ Siga os passos abaixo para clonar e rodar o projeto em sua máquina.
 
     O servidor estará rodando em `http://localhost:3000`.
 
+4.1  **Caso queira testar a conexão com o db:**
+
+    ```bash
+    node database/pingDb.js;
+    ```
+
 ### Endpoints da API
 
 A API possui um único endpoint para buscar dados de clima.
