@@ -2,22 +2,34 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const path = require('path');
 
-const filePath = path.join(__dirname, '..', '..', 'worldcities.csv');
+// csv resgatado em https://simplemaps.com/data/world-cities.
+const filePath = path.join(__dirname, '..', '..', 'worldcities-copy.csv');
 
 async function lerCsv(){
-    var cidades = [];
-    fs.createReadStream(filePath)
-        .pipe(csv())
-        .on('data', (row) => {
-            cidades.push(row);
-        })
-        .on('error', (error) => {
-            console.log('Erro ao ler o arquivo:', error);
-        })
-        .on('end', () => {
-            console.log('CSV processado');
-            console.log(cidades);
-        });
+    return new Promise((resolve, reject) => {
+        var all = [];
+        var cidades = [];
+        var pais = [];
+        fs.createReadStream(filePath)
+            .pipe(csv())
+            .on('data', (row) => {
+                all.push(row);
+                cidades.push(row.city);
+                pais.push(row.country)
+            })
+            .on('error', (error) => {
+                console.log('Erro ao ler o arquivo:', error);
+                reject(error);
+            })
+            .on('end', () => {
+                var dadosSeparados = {
+                    cidades: cidades,
+                    pais: pais
+                }
+                console.log('CSV processado');
+                resolve(dadosSeparados);
+            });
+    })
 }
 
 module.exports = { lerCsv }

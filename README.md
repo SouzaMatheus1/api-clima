@@ -18,6 +18,10 @@ Uma API RESTful simples para buscar dados de clima, desenvolvida em Node.js. Est
   * **Axios**: Cliente HTTP para a requisição à API de clima externa (OpenWeatherMap).
   * **Joi**: Biblioteca para validação de esquemas de dados.
   * **dotenv**: Para gerenciar variáveis de ambiente de forma segura.
+  * **ejs**: Para gerar paginas html de forma dinâmica.
+  * **csv-parser e fs**: Para ler e transferir os dados do csv para o sistema.
+  * **ejs**: Para gerenciar variáveis de ambiente de forma segura.
+  * **ejs**: Para gerenciar variáveis de ambiente de forma segura.
 
 ### Como Executar Localmente
 

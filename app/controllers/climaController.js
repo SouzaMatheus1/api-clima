@@ -14,12 +14,17 @@ async function getClima(req, res) {
 
         const formattedData = formatData(data);
 
-        await logService.dbLog(formattedData);
+        // await logService.dbLog(formattedData);
 
-        const cidades = await lerCsvService.lerCsv();
-        console.log(cidades);
+        const dataCities = await lerCsvService.lerCsv();
 
-        res.render('clima', { clima: formattedData });
+        const frontData = {
+            cidades: dataCities.cidades,
+            pais: dataCities.pais,
+            clima: formattedData
+        };
+
+        res.render('clima', frontData);
     } catch (error) {
         if (error.response && error.response.status === 404)
             return res.status(400).json({ error: "Cidade não encontrada." });
