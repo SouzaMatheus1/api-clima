@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
 
 app.use('/', mainRoutes);
-app.use('/', climaRoutes);
+app.use('/clima', climaRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);

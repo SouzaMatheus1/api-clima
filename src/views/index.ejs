@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste view clima</title>
+    <title>Clima check</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -15,8 +15,19 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center my-4">Bem-vindo!</h1>
+        <i class="fa-solid fa-cloud"></i><h1 class="text-center my-4">Bem-vindo!</h1>
     </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <form action="/clima" method="GET">
+                <label class="form-label" for="cidade_input">Digite o nome da cidade:</label>
+                <input type="text" name="cidade" class="form-control" id="cidade_input" placeholder="Digite o nome da cidade" required>
+                <button id="consultar_clima" class="btn btn-primary mt-3">Consultar clima</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>

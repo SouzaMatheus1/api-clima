@@ -6,7 +6,7 @@ async function getClima(req, res) {
     const { cidade } = req.query;
 
     if (!cidade) {
-        return res.status(400).json({ error: 'Cidade é obrigatória' });
+        return res.render('index', { error: "Por favor, insira o nome de uma cidade." });
     }
 
     try {
