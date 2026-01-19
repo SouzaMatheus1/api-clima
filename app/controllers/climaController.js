@@ -6,7 +6,7 @@ async function getClima(req, res) {
     const { cidade } = req.query;
 
     if (!cidade) {
-        return res.status(400).json({ error: 'Cidade é obrigatória' });
+        return res.render('index', { error: "Por favor, insira o nome de uma cidade." });
     }
 
     try {
@@ -14,7 +14,7 @@ async function getClima(req, res) {
 
         const formattedData = formatData(data);
 
-        // await logService.dbLog(formattedData);
+        await logService.dbLog(formattedData);
 
         const dataCities = await lerCsvService.lerCsv();
 
@@ -23,7 +23,6 @@ async function getClima(req, res) {
             pais: dataCities.pais,
             clima: formattedData
         };
-
         res.render('clima', frontData);
     } catch (error) {
         if (error.response && error.response.status === 404)
