@@ -14,7 +14,7 @@ async function getClima(req, res) {
 
         const formattedData = formatData(data);
 
-        // await logService.dbLog(formattedData);
+        await logService.dbLog(formattedData);
 
         const dataCities = await lerCsvService.lerCsv();
 
