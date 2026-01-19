@@ -1,6 +1,6 @@
-# API de Clima (Node.js)
+# Aplicação Web de Clima (Node.js)
 
-Uma API RESTful simples para buscar dados de clima, desenvolvida em Node.js. Este projeto foi criado com o intuito de demonstrar habilidades em desenvolvimento backend, validação de dados, integração com APIs externas e armazenamento de logs de requisições em um banco de dados NoSQL.
+Uma aplicação web simples para buscar dados de clima, desenvolvida em Node.js. Este projeto foi criado com o intuito de demonstrar habilidades em desenvolvimento backend, validação de dados, integração com APIs externas e armazenamento de logs de requisições em um banco de dados NoSQL.
 
 ### Funcionalidades
 
@@ -13,15 +13,13 @@ Uma API RESTful simples para buscar dados de clima, desenvolvida em Node.js. Est
 ### Tecnologias
 
   * **Node.js**: Ambiente de execução.
-  * **Express.js**: Framework web para a construção da API.
+  * **Express.js**: Framework web para a construção da aplicação.
   * **Firestore**: Banco de dados NoSQL do Firebase para o log de requisições.
   * **Axios**: Cliente HTTP para a requisição à API de clima externa (OpenWeatherMap).
   * **Joi**: Biblioteca para validação de esquemas de dados.
   * **dotenv**: Para gerenciar variáveis de ambiente de forma segura.
-  * **ejs**: Para gerar paginas html de forma dinâmica.
-  * **csv-parser e fs**: Para ler e transferir os dados do csv para o sistema.
-  * **ejs**: Para gerenciar variáveis de ambiente de forma segura.
-  * **ejs**: Para gerenciar variáveis de ambiente de forma segura.
+  * **ejs**: Para gerar páginas HTML de forma dinâmica.
+  * **csv-parser e fs**: Para ler e transferir os dados do CSV para o sistema.
 
 ### Como Executar Localmente
 
@@ -46,6 +44,7 @@ Siga os passos abaixo para clonar e rodar o projeto em sua máquina.
     ```env
     # Chave da API de Clima (OpenWeatherMap)
     API_KEY=sua_chave_da_openweathermap
+    BASE_URL=https://api.openweathermap.org/data/2.5/weather
 
     # Credenciais do Projeto Firebase
     API_KEY_FIREBASE=
@@ -65,7 +64,7 @@ Siga os passos abaixo para clonar e rodar o projeto em sua máquina.
     node public/index.js
     ```
 
-    O servidor estará rodando em `http://localhost:3000`.
+    O servidor estará rodando em `http://localhost:8080`.
 
 5  **Caso queira testar a conexão com o db:**
 
@@ -73,36 +72,47 @@ Siga os passos abaixo para clonar e rodar o projeto em sua máquina.
     node app/database/pingDb.js
     ```
 
-### Endpoints da API
+### Endpoints da Aplicação
 
-A API possui um único endpoint para buscar dados de clima.
+A aplicação possui as seguintes rotas:
+
+#### `GET /`
+
+  * **Descrição:** Renderiza a página inicial com um formulário para selecionar uma cidade.
+  * **Exemplo de Requisição:**
+    ```
+    http://localhost:8080/
+    ```
 
 #### `GET /clima`
 
-  * **Descrição:** Retorna os dados de clima para uma cidade específica.
+  * **Descrição:** Busca os dados de clima para uma cidade específica e renderiza a página com os resultados.
   * **Parâmetros de Query:**
       * `cidade` (obrigatório): O nome da cidade.
   * **Exemplo de Requisição:**
     ```
-    http://localhost:3000/clima?cidade=Sao Paulo
+    http://localhost:8080/clima?cidade=Sao Paulo
+    ```
+  * **Resposta:** Renderiza uma página HTML com os dados do clima.
+
+#### `GET /csv`
+
+  * **Descrição:** Retorna os dados das cidades e países do arquivo CSV em formato JSON.
+  * **Exemplo de Requisição:**
+    ```
+    http://localhost:8080/csv
     ```
   * **Exemplo de Resposta (JSON):**
     ```json
     {
-      "cidade": "Sao Paulo",
-      "pais": "BR",
-      "temperatura": "25.7°C",
-      "sensacao_termica": "26.1°C",
-      "condicao": "céu limpo",
-      "umidade": "55%",
-      "velocidade_vento": 3.6,
-      "icone": "http://openweathermap.org/img/wn/01d.png"
+      "cidades": ["São Paulo", "Rio de Janeiro", ...],
+      "pais": ["Brazil", "Brazil", ...]
     }
     ```
 
 ### Autor
 
-  * **Matheus de Souza** - [GitHub](https://www.google.com/search?q=https://github.com/SouzaMatheus1)
+  * **Matheus de Souza** - [GitHub](https://github.com/SouzaMatheus1)
 
 ### Licença
 
