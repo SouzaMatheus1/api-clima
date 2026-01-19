@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mainRoutes = require('../app/routes/mainRoutes');
 const climaRoutes = require('../app/routes/climaRoutes');
+const csvRoutes = require('../app/routes/csvRoutes');
 const path = require('path');
 
 const app = express();
@@ -13,6 +14,7 @@ app.set('views', path.join(__dirname, '..', 'src', 'views'));
 
 app.use('/', mainRoutes);
 app.use('/clima', climaRoutes);
+app.use('/csv', csvRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);

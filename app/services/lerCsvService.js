@@ -3,6 +3,7 @@ const csv = require('csv-parser');
 const path = require('path');
 
 // csv resgatado em https://simplemaps.com/data/world-cities.
+// const filePath = path.join(__dirname, '..', '..', 'worldcities.csv');
 const filePath = path.join(__dirname, '..', '..', 'worldcities-copy.csv');
 
 async function lerCsv(){
@@ -26,7 +27,7 @@ async function lerCsv(){
                     cidades: cidades,
                     pais: pais
                 }
-                console.log('CSV processado');
+                // console.log('CSV processado');
                 resolve(dadosSeparados);
             });
     })

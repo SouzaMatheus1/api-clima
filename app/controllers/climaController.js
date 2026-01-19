@@ -23,7 +23,6 @@ async function getClima(req, res) {
             pais: dataCities.pais,
             clima: formattedData
         };
-
         res.render('clima', frontData);
     } catch (error) {
         if (error.response && error.response.status === 404)
