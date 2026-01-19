@@ -5,6 +5,7 @@ async function lerCsv(req, res) {
         const dataCities = await lerCsvService.lerCsv();
         console.log('CSV CONTROLLER:');
         console.log(dataCities);
+        res.json(dataCities);
     }
     catch (error) {
         res.status(500).json({ error: "Erro ao ler o CSV.", error: error.message });
